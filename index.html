@@ -9,13 +9,13 @@
   /* ─── TOKENS ─────────────────────────────────────────── */
   :root {
   /* 🌑 DARK MODE TOKENS */
-  --cream:   #0E0F12;   /* main background */
+  --cream:   #24262b;   /* main background */
   --cream2:  #17191D;   /* section bg */
   --ink:     #F5F5F4;   /* primary text */
   --ink2:    #D1D5DB;   /* secondary text */
   --ink3:    #9CA3AF;   /* muted text */
 
-  --coral:   #FF7A59;   /* accent */
+  --coral:   #b36855;   /* accent */
   --coral-lt:#2A1B17;   /* subtle accent background */
 
   --sage:    #34D399;
@@ -297,7 +297,7 @@ nav {
     font-size: 11px; font-weight: 600; letter-spacing: .14em;
     text-transform: uppercase; color: var(--ink3); margin-bottom: 20px;
   }
-  .screens-row { display: flex; gap: 16px; }
+  .screens-row { display: grid; gap: 16px; }
   .screen-mockup {
     flex: 1; border-radius: 12px; overflow: hidden;
     border: 1px solid var(--border); box-shadow: var(--shadow);
@@ -305,7 +305,7 @@ nav {
   .project-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -503,6 +503,19 @@ nav {
     .section          { padding: 70px 0; }
   }
 
+  @media (max-width: 860px) {
+  .screens-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .screens-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+
   /* ─── INTERNSHIP SECTION ───────────────── */
 .internship-section {
   background: var(--cream);
@@ -511,7 +524,7 @@ nav {
 .internship-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  gap: 20px;
 }
 
 .internship-shot {
@@ -521,17 +534,20 @@ nav {
   overflow: hidden;
   box-shadow: var(--shadow);
   transition: transform .2s, box-shadow .2s;
+  /* height: 220px; */
 }
 
 .internship-shot:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-lg);
+  /* background: var(--coral); */
 }
 
 .internship-shot img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  /* padding: 0px; */
 }
 
 .internship-tags {
@@ -628,7 +644,8 @@ nav {
       <!-- Right card -->
       <div class="hero-card reveal">
         <div class="hero-card-avatar">
-          <img src="assets/profile.png" alt="Ishika Poptani">
+          <img src="assets/profile.webp" alt="Ishika Poptani" width="300" height="300" loading="lazy" decoding="async" />
+
         </div>
         <h3>Ishika Poptani</h3>
         <p>UI/UX Designer &amp; Frontend Developer</p>
@@ -660,6 +677,9 @@ nav {
     </div>
   </div>
 </section>
+
+
+
 
 <!-- ╔══════════════════════════════════╗ -->
 <!-- ║  PROJECTS                        ║ -->
@@ -792,15 +812,27 @@ nav {
         <div class="screens-row">
       
           <div class="screen-mockup real-screen">
-            <img src="assets/visionmvps/screen1.png" class="project-image" alt="VisionMVPs Dashboard">
+            <img src="assets/visionmvps/screen1.webp" class="project-image" alt="VisionMVPs Dashboard" loading="lazy"
+              decoding="async" />
+
           </div>
       
           <div class="screen-mockup real-screen">
-            <img src="assets/visionmvps/screen2.png" class="project-image" alt="VisionMVPs AI Insights">
+            <img src="assets/visionmvps/screen2.webp" class="project-image" alt="VisionMVPs Dashboard" loading="lazy"
+              decoding="async" />
+
           </div>
       
           <div class="screen-mockup real-screen">
-            <img src="assets/visionmvps/screen3.png" class="project-image" alt="VisionMVPs Workflow">
+            <img src="assets/visionmvps/screen3.webp" class="project-image" alt="VisionMVPs Dashboard" loading="lazy"
+              decoding="async" />
+
+          </div>
+
+          <div class="screen-mockup real-screen">
+            <img src="assets/visionmvps/screen4.webp" class="project-image" alt="VisionMVPs Dashboard" loading="lazy"
+              decoding="async" />
+          
           </div>
       
         </div>
@@ -913,15 +945,20 @@ nav {
         <div class="screens-row">
     
           <div class="screen-mockup real-screen">
-            <img src="assets/zeroeffort/screen1.png" class="project-image" alt="ZeroEffort Hero">
+            <img src="assets/zeroeffort/screen1.webp" class="project-image" alt="VisionMVPs Dashboard" loading="lazy"
+              decoding="async" />  
           </div>
     
           <div class="screen-mockup real-screen">
-            <img src="assets/zeroeffort/screen2.png" class="project-image" alt="AI Plan Generator">
+            <img src="assets/zeroeffort/screen2.webp" class="project-image" alt="VisionMVPs Dashboard" loading="lazy"
+              decoding="async" />  
           </div>
     
+          
           <div class="screen-mockup real-screen">
-            <img src="assets/zeroeffort/screen3.png" class="project-image" alt="Task Planning">
+            <img src="assets/zeroeffort/screen4.webp" class="project-image" alt="VisionMVPs Dashboard" loading="lazy"
+              decoding="async" />
+          
           </div>
     
         </div>
@@ -1003,15 +1040,19 @@ nav {
         <div class="screens-row">
       
           <div class="screen-mockup real-screen">
-            <img src="assets/leetcodensquare/screen1.png" class="project-image" alt="LeetcodeNSquare Dashboard">
+            <img src="assets/leetcodensquare/screen1.webp" class="project-image" alt="VisionMVPs Dashboard" loading="lazy"
+              decoding="async" />  
           </div>
       
           <div class="screen-mockup real-screen">
-            <img src="assets/leetcodensquare/screen2.png" class="project-image" alt="Complexity Analyzer">
+            <img src="assets/leetcodensquare/screen2.webp" class="project-image" alt="VisionMVPs Dashboard" loading="lazy"
+              decoding="async" />
           </div>
       
           <div class="screen-mockup real-screen">
-            <img src="assets/leetcodensquare/screen3.png" class="project-image" alt="Code Analysis Result">
+            <img src="assets/leetcodensquare/screen3.webp" class="project-image" alt="VisionMVPs Dashboard" loading="lazy"
+              decoding="async" />
+  
           </div>
       
         </div>
@@ -1061,16 +1102,27 @@ nav {
     <div class="internship-grid reveal">
 
       <div class="internship-shot">
-        <img src="assets/internship/screen1.png" alt="Internship Screen 1">
+        <img src="assets/internship/screen1.webp" alt="Internship Screen 1" loading="lazy" decoding="async"">
       </div>
       <div class="internship-shot">
-        <img src="assets/internship/screen3.png" alt="Internship Screen 3">
+        <img src="assets/internship/screen3.webp" alt="Internship Screen 2" loading="lazy" decoding="async"">
       </div>
 
       <div class="internship-shot">
-        <img src="assets/internship/screen4.png" alt="Internship Screen 4">
+        <img src="assets/internship/screen6.webp" alt="Internship Screen 3" loading="lazy" decoding="async"">
       </div>
 
+      <div class="internship-shot">
+        <img src="assets/internship/screen2.webp" alt="Internship Screen 4" loading="lazy" decoding="async"">
+      </div>
+
+      <div class="internship-shot">
+        <img src="assets/internship/screen6.webp" alt="Internship Screen 5" loading="lazy" decoding="async"">
+      </div>
+
+      <div class="internship-shot">
+        <img src="assets/internship/screen4.webp" alt="Internship Screen 6" loading="lazy" decoding="async"">
+      </div>
     </div>
 
     <div class="internship-tags">
