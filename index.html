@@ -172,6 +172,14 @@ nav {
     font-size: 28px; font-weight: 700; color: #fff;
     margin-bottom: 18px;
   }
+
+  .hero-card-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
   .hero-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
   .hero-card p  { font-size: 13px; color: var(--ink3); margin-bottom: 20px; }
   .hero-stats {
@@ -533,6 +541,33 @@ nav {
   flex-wrap: wrap;
 }
 
+.project-actions {
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.demo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--coral);
+  color: #fff;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 14px rgba(255,122,89,.25);
+}
+
+.demo-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255,122,89,.35);
+}
+
+
 /* Mobile */
 @media (max-width: 860px) {
   .internship-grid {
@@ -592,7 +627,9 @@ nav {
       </div>
       <!-- Right card -->
       <div class="hero-card reveal">
-        <div class="hero-card-avatar">IP</div>
+        <div class="hero-card-avatar">
+          <img src="assets/profile.png" alt="Ishika Poptani">
+        </div>
         <h3>Ishika Poptani</h3>
         <p>UI/UX Designer &amp; Frontend Developer</p>
         <div class="hero-tags">
@@ -636,7 +673,7 @@ nav {
       <p>Three end-to-end design explorations showing research, thinking, wireframes, final UI, and measurable outcomes.</p>
     </div>
 
-    <!-- ═══ PROJECT 1 – SHOPEASE ═══ -->
+    <!-- ═══ PROJECT 1 – Vision ═══ -->
     <div class="project-card reveal">
       <div class="project-header">
         <div class="project-icon" style="background:#EEF0FF;">🛍️</div>
@@ -649,63 +686,41 @@ nav {
             <span class="tag">Startup Tool</span>
             <span class="tag">Next.js</span>
           </div>
-
         </div>
+        <div class="project-actions">
+          <a href="https://www.visionmvps.com/" target="_blank" class="demo-btn">
+            🔗 Live Demo
+          </a>
+        </div>
+
       </div>
 
+      <!-- PROBLEM + RESEARCH -->
       <div class="case-study-grid">
+      
         <div class="case-col">
           <h4>🔴 The Problem</h4>
           <p>
-            Startups struggled to validate ideas quickly due to lack of structured MVP workflows. Existing tools were complex and
-            overwhelming, making it difficult to move from idea → prototype efficiently.
+            Early-stage startups struggle to move from idea → working MVP quickly.
+            Existing tools are either too technical or too fragmented, forcing founders
+            to switch between planning, prototyping, and validation platforms.
+            This creates friction and slows down experimentation.
           </p>
-
         </div>
+      
         <div class="case-col" style="border-right:none;">
           <h4>🔍 UX Thinking &amp; Research</h4>
-          <p>Conducted a heuristic audit and 5-second tests with 12 users. Found that <strong>trust signals</strong> (reviews, badges) and <strong>product clarity</strong> (size charts, zoom) were the top two missing elements. Simplified checkout from 7 → 3 steps using a progressive disclosure pattern.</p>
+          <p>
+            Designed around a <strong>guided workflow model</strong> to reduce decision fatigue.
+            Research showed founders wanted clarity and speed, not feature-heavy dashboards.
+            The flow was simplified into structured steps — idea → validation → prototype —
+            supported by AI insights to help users make faster product decisions.
+          </p>
         </div>
+      
       </div>
 
-      <div class="wireframe-band">
-        <h4>📐 Wireframe Exploration</h4>
-        <div class="wireframe-row">
-          <div style="flex:1;">
-            <div class="wf-box">
-              <div class="wf-bar header"></div>
-              <div class="wf-bar" style="height:80px;"></div>
-              <div class="wf-bar short"></div>
-              <div class="wf-bar short" style="width:30%"></div>
-              <div class="wf-bar" style="height:28px;background:#E0DAD0;"></div>
-            </div>
-            <p class="wf-label">Product Page — V1 (Cluttered)</p>
-          </div>
-          <div style="flex:1;">
-            <div class="wf-box">
-              <div class="wf-bar header" style="width:40%"></div>
-              <div class="wf-bar" style="height:100px;"></div>
-              <div class="wf-bar" style="width:80%"></div>
-              <div class="wf-bar short" style="width:50%"></div>
-              <div class="wf-bar" style="height:32px;background:#FBEAE4;"></div>
-            </div>
-            <p class="wf-label">Product Page — V2 (Focused)</p>
-          </div>
-          <div style="flex:1;">
-            <div class="wf-box">
-              <div class="wf-bar header" style="width:25%"></div>
-              <div style="display:flex;gap:6px;">
-                <div class="wf-bar" style="flex:1;height:28px;"></div>
-                <div class="wf-bar" style="flex:1;height:28px;"></div>
-              </div>
-              <div class="wf-bar short"></div>
-              <div class="wf-bar" style="height:32px;background:#FBEAE4;"></div>
-              <div class="wf-bar short" style="width:60%"></div>
-            </div>
-            <p class="wf-label">Checkout — 3-Step Flow</p>
-          </div>
-        </div>
-      </div>
+      
 
       <!-- <div class="screens-band">
 
@@ -840,173 +855,9 @@ nav {
       </div>
 
     </div>
-    <!-- /shopease -->
+    <!-- /vision -->
 
-    
-      <div class="project-header">
-        <div class="project-icon" style="background:#E8F4FD;">🎓</div>
-        <div class="project-header-text">
-          <h3>SkillBridge — AI Learning Dashboard</h3>
-          <p>Creating a focused, distraction-free learning environment for an AI-powered education platform.</p>
-          <div class="project-tags">
-            <span class="tag">EdTech</span>
-            <span class="tag">Dashboard</span>
-            <span class="tag">AI-powered</span>
-            <span class="tag">Dark UI</span>
-          </div>
-        </div>
-      </div>
 
-      <div class="case-study-grid">
-        <div class="case-col">
-          <h4>🔴 The Problem</h4>
-          <p>Learners on AI-powered platforms reported <strong>overwhelming UI</strong> — too many course suggestions, unclear progress tracking, and no clear "what to do next." Retention dropped after week 2 due to lack of momentum indicators.</p>
-        </div>
-        <div class="case-col" style="border-right:none;">
-          <h4>🔍 UX Thinking &amp; Research</h4>
-          <p>Ran user journey mapping sessions and identified 3 drop-off points. Applied the <strong>Progress Principle</strong> — surfacing small wins and streaks to build habits. Consolidated all AI recommendations into a single contextual "Focus Mode" panel, removing sidebar clutter.</p>
-        </div>
-      </div>
-
-      <div class="wireframe-band">
-        <h4>📐 Wireframe Exploration</h4>
-        <div class="wireframe-row">
-          <div style="flex:1.6">
-            <div class="wf-box">
-              <div class="wf-bar header"></div>
-              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:8px;">
-                <div class="wf-bar" style="height:36px;"></div>
-                <div class="wf-bar" style="height:36px;"></div>
-                <div class="wf-bar" style="height:36px;"></div>
-              </div>
-              <div style="display:grid;grid-template-columns:2fr 1fr;gap:8px;">
-                <div class="wf-bar" style="height:64px;"></div>
-                <div class="wf-bar" style="height:64px;"></div>
-              </div>
-            </div>
-            <p class="wf-label">Dashboard Layout — Final</p>
-          </div>
-          <div style="flex:1">
-            <div class="wf-box">
-              <div class="wf-bar header" style="width:50%"></div>
-              <div class="wf-bar" style="height:12px;background:linear-gradient(90deg,var(--border) 60%,var(--cream2) 60%);border-radius:4px;"></div>
-              <div class="wf-bar short"></div>
-              <div style="display:flex;gap:6px;">
-                <div style="width:14px;height:14px;border-radius:3px;background:var(--border);"></div>
-                <div class="wf-bar short" style="flex:1;height:14px;"></div>
-              </div>
-              <div style="display:flex;gap:6px;">
-                <div style="width:14px;height:14px;border-radius:3px;background:var(--border);"></div>
-                <div class="wf-bar short" style="flex:1;height:14px;"></div>
-              </div>
-            </div>
-            <p class="wf-label">Progress Module</p>
-          </div>
-          <div style="flex:1">
-            <div class="wf-box">
-              <div class="wf-bar header" style="width:70%"></div>
-              <div class="wf-bar" style="height:48px;background:rgba(224,92,58,.12);border-radius:6px;"></div>
-              <div class="wf-bar short"></div>
-              <div class="wf-bar" style="height:28px;background:rgba(224,92,58,.18);border-radius:4px;"></div>
-            </div>
-            <p class="wf-label">AI Focus Panel</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="screens-band">
-        <h4>🖥️ Final UI Screens</h4>
-        <div class="screens-row">
-          <div class="screen-mockup skillbridge-screen" style="flex:1.8">
-            <div class="screen-topbar" style="background:#1E293B;">
-              <div class="screen-dot" style="background:#ff5f57"></div>
-              <div class="screen-dot" style="background:#febc2e"></div>
-              <div class="screen-dot" style="background:#28c840"></div>
-            </div>
-            <div style="background:#0F172A;padding:14px;">
-              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px;">
-                <div style="background:#1E293B;border-radius:8px;padding:10px;">
-                  <div style="height:6px;background:#334155;border-radius:4px;width:60%;margin-bottom:4px;"></div>
-                  <div style="height:14px;background:#38BDF8;border-radius:3px;width:40%;"></div>
-                </div>
-                <div style="background:#1E293B;border-radius:8px;padding:10px;">
-                  <div style="height:6px;background:#334155;border-radius:4px;width:60%;margin-bottom:4px;"></div>
-                  <div style="height:14px;background:#A78BFA;border-radius:3px;width:40%;"></div>
-                </div>
-                <div style="background:#1E293B;border-radius:8px;padding:10px;">
-                  <div style="height:6px;background:#334155;border-radius:4px;width:60%;margin-bottom:4px;"></div>
-                  <div style="height:14px;background:#4ADE80;border-radius:3px;width:40%;"></div>
-                </div>
-              </div>
-              <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:10px;">
-                <div style="background:#1E293B;border-radius:8px;padding:12px;">
-                  <div style="height:6px;background:#334155;border-radius:4px;width:50%;margin-bottom:8px;"></div>
-                  <div style="height:8px;background:#334155;border-radius:4px;margin-bottom:6px;overflow:hidden;">
-                    <div style="height:100%;width:68%;background:linear-gradient(90deg,#38BDF8,#818CF8);"></div>
-                  </div>
-                  <div style="height:8px;background:#334155;border-radius:4px;margin-bottom:6px;overflow:hidden;">
-                    <div style="height:100%;width:43%;background:linear-gradient(90deg,#A78BFA,#EC4899);"></div>
-                  </div>
-                  <div style="height:8px;background:#334155;border-radius:4px;overflow:hidden;">
-                    <div style="height:100%;width:81%;background:linear-gradient(90deg,#4ADE80,#22D3EE);"></div>
-                  </div>
-                </div>
-                <div style="background:linear-gradient(135deg,#1E293B,#2D1B69);border-radius:8px;padding:12px;border:1px solid rgba(167,139,250,.2);">
-                  <div style="height:6px;background:rgba(167,139,250,.3);border-radius:4px;width:70%;margin-bottom:6px;"></div>
-                  <div style="height:5px;background:rgba(255,255,255,.1);border-radius:4px;margin-bottom:4px;"></div>
-                  <div style="height:5px;background:rgba(255,255,255,.1);border-radius:4px;width:80%;margin-bottom:10px;"></div>
-                  <div style="height:22px;background:linear-gradient(90deg,#7C3AED,#A855F7);border-radius:5px;"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="screen-mockup skillbridge-screen">
-            <div class="screen-topbar" style="background:#312E81;">
-              <div class="screen-dot" style="background:#ff5f57"></div>
-              <div class="screen-dot" style="background:#febc2e"></div>
-              <div class="screen-dot" style="background:#28c840"></div>
-            </div>
-            <div style="background:#1E1B4B;padding:12px;">
-              <div style="height:6px;background:#312E81;border-radius:4px;width:60%;margin-bottom:8px;"></div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px;">
-                <div style="background:#312E81;border-radius:7px;padding:8px;">
-                  <div style="width:16px;height:16px;border-radius:50%;background:#4ADE80;margin-bottom:6px;"></div>
-                  <div style="height:5px;background:rgba(255,255,255,.15);border-radius:3px;"></div>
-                </div>
-                <div style="background:#312E81;border-radius:7px;padding:8px;">
-                  <div style="width:16px;height:16px;border-radius:50%;background:#F59E0B;margin-bottom:6px;"></div>
-                  <div style="height:5px;background:rgba(255,255,255,.15);border-radius:3px;"></div>
-                </div>
-              </div>
-              <div style="background:#312E81;border-radius:8px;padding:10px;">
-                <div style="height:5px;background:rgba(255,255,255,.2);border-radius:3px;width:80%;margin-bottom:4px;"></div>
-                <div style="height:5px;background:rgba(255,255,255,.1);border-radius:3px;width:60%;margin-bottom:8px;"></div>
-                <div style="height:18px;background:linear-gradient(90deg,#6366F1,#8B5CF6);border-radius:4px;"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="result-band">
-        <div class="result-metric">
-          <div class="result-num">+55%</div>
-          <div class="result-label">Week-2 Retention</div>
-        </div>
-        <div class="result-divider"></div>
-        <div class="result-metric">
-          <div class="result-num">1 panel</div>
-          <div class="result-label">AI Recs (was scattered)</div>
-        </div>
-        <div class="result-divider"></div>
-        <div class="result-metric">
-          <div class="result-num">3x</div>
-          <div class="result-label">Progress Visibility</div>
-        </div>
-        <div class="result-divider"></div>
-        <p class="result-text">Consolidating AI recommendations and surfacing micro-progress wins kept learners motivated. The dark dashboard reduced eye strain for extended study sessions, improving daily active use.</p>
-      </div>
-    </div> 
     <!-- ═══ PROJECT 2 – ZEROEFFORT ═══ -->
     <div class="project-card reveal" style="transition-delay:.1s">
     
@@ -1025,6 +876,12 @@ nav {
             <span class="tag">Automation</span>
           </div>
         </div>
+        <div class="project-actions">
+          <a href="https://zeroeffort.vercel.app/" target="_blank" class="demo-btn">
+            🔗 Live Demo
+          </a>
+        </div>
+
       </div>
     
       <!-- PROBLEM + RESEARCH -->
@@ -1047,44 +904,7 @@ nav {
         </div>
       </div>
     
-      <!-- WIREFRAMES -->
-      <div class="wireframe-band">
-        <h4>📐 Wireframe Exploration</h4>
-    
-        <div class="wireframe-row">
-    
-          <div style="flex:1;">
-            <div class="wf-box">
-              <div class="wf-bar header"></div>
-              <div class="wf-bar" style="height:70px;"></div>
-              <div class="wf-bar short"></div>
-              <div class="wf-bar" style="height:28px;background:#1f2b24;"></div>
-            </div>
-            <p class="wf-label">Prompt Input Screen</p>
-          </div>
-    
-          <div style="flex:1;">
-            <div class="wf-box">
-              <div class="wf-bar header" style="width:40%"></div>
-              <div class="wf-bar" style="height:90px;"></div>
-              <div class="wf-bar short"></div>
-              <div class="wf-bar short" style="width:60%"></div>
-            </div>
-            <p class="wf-label">Generated Plan View</p>
-          </div>
-    
-          <div style="flex:1;">
-            <div class="wf-box">
-              <div class="wf-bar header" style="width:50%"></div>
-              <div class="wf-bar" style="height:30px;"></div>
-              <div class="wf-bar" style="height:30px;"></div>
-              <div class="wf-bar" style="height:30px;"></div>
-            </div>
-            <p class="wf-label">Task Tracking Flow</p>
-          </div>
-    
-        </div>
-      </div>
+     
     
       <!-- FINAL SCREENS -->
       <div class="screens-band">
@@ -1141,7 +961,6 @@ nav {
     </div>
     <!-- /zeroeffort -->
 
-    <!-- /skillbridge -->
 
     <!-- ═══ PROJECT 3 – LEETCODESQUARE ═══ -->
     <div class="project-card reveal" style="transition-delay:.2s">
@@ -1157,6 +976,12 @@ nav {
             <span class="tag">Dark + Accent</span>
           </div>
         </div>
+        <div class="project-actions">
+          <a href="https://leetcodensquare.vercel.app/" target="_blank" class="demo-btn">
+            🔗 Live Demo
+          </a>
+        </div>
+
       </div>
 
       <div class="case-study-grid">
@@ -1170,53 +995,7 @@ nav {
         </div>
       </div>
 
-      <div class="wireframe-band">
-        <h4>📐 Wireframe Exploration</h4>
-        <div class="wireframe-row">
-          <div style="flex:1">
-            <div class="wf-box">
-              <div class="wf-bar header"></div>
-              <div style="display:flex;gap:4px;margin-bottom:6px;">
-                <div class="wf-bar" style="flex:1;height:12px;background:rgba(224,92,58,.25);"></div>
-                <div class="wf-bar" style="flex:1;height:12px;background:rgba(224,92,58,.15);"></div>
-                <div class="wf-bar" style="flex:1;height:12px;background:rgba(224,92,58,.1);"></div>
-              </div>
-              <div class="wf-bar" style="height:60px;"></div>
-            </div>
-            <p class="wf-label">Complexity Chart Panel</p>
-          </div>
-          <div style="flex:1">
-            <div class="wf-box">
-              <div class="wf-bar header" style="width:40%"></div>
-              <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
-                <div style="width:10px;height:10px;border-radius:2px;background:#4ADE80;flex-shrink:0;"></div>
-                <div class="wf-bar" style="flex:1;height:8px;"></div>
-              </div>
-              <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
-                <div style="width:10px;height:10px;border-radius:2px;background:#FACC15;flex-shrink:0;"></div>
-                <div class="wf-bar" style="flex:1;height:8px;"></div>
-              </div>
-              <div style="display:flex;align-items:center;gap:6px;">
-                <div style="width:10px;height:10px;border-radius:2px;background:#F87171;flex-shrink:0;"></div>
-                <div class="wf-bar" style="flex:1;height:8px;"></div>
-              </div>
-            </div>
-            <p class="wf-label">Severity Legend</p>
-          </div>
-          <div style="flex:1.3">
-            <div class="wf-box">
-              <div class="wf-bar header"></div>
-              <div class="wf-bar short"></div>
-              <div style="background:rgba(224,92,58,.1);border-radius:6px;padding:8px;border:1px dashed rgba(224,92,58,.3);">
-                <div class="wf-bar" style="height:8px;margin-bottom:4px;"></div>
-                <div class="wf-bar short"></div>
-              </div>
-              <div class="wf-bar short" style="width:80%"></div>
-            </div>
-            <p class="wf-label">Code Input + Analysis</p>
-          </div>
-        </div>
-      </div>
+      
 
       <div class="screens-band">
         <h4>🖥️ Final UI Screens</h4>
@@ -1258,7 +1037,7 @@ nav {
         <p class="result-text">Color-coded severity badges let engineers identify risky complexity in under 5 seconds. The progressive overlay chart system allows students to compare Big-O curves dynamically without cognitive overload.</p>
       </div>
     </div>
-    <!-- /leet -->
+    <!-- /leetcode -->
 
   </div>
 </section>
