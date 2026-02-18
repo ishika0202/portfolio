@@ -1383,6 +1383,129 @@
         text-align: center;
       }
     }
+    /* ===================================== */
+/* 🔥 REAL RESPONSIVE FIX */
+/* ===================================== */
+
+@media (max-width: 1024px) {
+
+  /* ---- PROCESS SECTION ---- */
+  #process .container > div {
+    grid-template-columns: 1fr !important;
+    gap: 50px !important;
+  }
+
+  .process-timeline {
+    padding-left: 30px;
+  }
+
+  .process-step {
+    padding-left: 30px;
+  }
+
+  .process-dot {
+    left: -30px;
+  }
+
+  /* ---- CASE STUDY HEADER ---- */
+  .case-header {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .case-link-btn {
+    order: 3;
+  }
+
+  .case-toggle {
+    margin-left: auto;
+  }
+
+  /* ---- STORY GRID ---- */
+  .story-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* ---- METRICS ---- */
+  .metrics-band {
+    flex-wrap: wrap;
+  }
+
+  .metric {
+    flex: 1 1 45%;
+    border-right: none;
+    padding: 10px 0;
+  }
+}
+
+/* =========================== */
+/* 📱 MOBILE FIXES */
+/* =========================== */
+
+@media (max-width: 768px) {
+
+  body {
+    cursor: auto !important;
+  }
+
+  .cursor,
+  .cursor-ring {
+    display: none !important;
+  }
+
+  .container,
+  .hero-inner {
+    padding: 0 20px !important;
+  }
+
+  .section {
+    padding: 90px 0 !important;
+  }
+
+  /* HERO */
+  .hero-name {
+    font-size: clamp(48px, 16vw, 72px);
+  }
+
+  .hero-title {
+    font-size: 12px;
+  }
+
+  .hero-bio {
+    font-size: 15px;
+  }
+
+  /* CASE GRID */
+  .story-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .screens-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* INTERNSHIP */
+  .i-shot {
+    width: 260px;
+    height: 520px;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* CONTACT */
+  .contact-title {
+    line-height: 1.1;
+  }
+
+  .contact-info {
+    flex-direction: column;
+    gap: 14px;
+  }
+}
+
   </style>
 </head>
 
