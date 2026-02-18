@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ishika Poptani — UI/UX Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  /* ─── TOKENS ─────────────────────────────────────────── */
+  :root {
+  /* 🌑 DARK MODE TOKENS */
+  --cream:   #0E0F12;   /* main background */
+  --cream2:  #17191D;   /* section bg */
+  --ink:     #F5F5F4;   /* primary text */
+  --ink2:    #D1D5DB;   /* secondary text */
+  --ink3:    #9CA3AF;   /* muted text */
+
+  --coral:   #FF7A59;   /* accent */
+  --coral-lt:#2A1B17;   /* subtle accent background */
+
+  --sage:    #34D399;
+
+  --card-bg: #14161A;   /* cards */
+  --border:  #262A30;
+
+  --r:       14px;
+  --r-sm:    8px;
+
+  --shadow:     0 4px 30px rgba(0,0,0,.45);
+  --shadow-lg:  0 10px 50px rgba(0,0,0,.55);
+}
+
+
+  /* ─── RESET ──────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ─── UTILITY ─────────────────────────────────────────── */
+  .container  { max-width: 1140px; margin: 0 auto; padding: 0 32px; }
+  .section    { padding: 100px 0; }
+  .eyebrow    {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--coral);
+    margin-bottom: 14px;
+  }
+  .serif      { font-family: 'Playfair Display', serif; }
+  .tag {
+    display: inline-block;
+    font-size: 11.5px; font-weight: 500; letter-spacing: .04em;
+    padding: 4px 12px; border-radius: 100px;
+    background: var(--cream2); color: var(--ink2);
+  }
+
+  /* ─── NAV ─────────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  background: rgba(14,15,18,.88);
+
+  /* Glass blur effect */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-bottom: 1px solid var(--border);
+}
+
+
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px; max-width: 1140px; margin: 0 auto; padding: 0 32px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700; color: var(--ink);
+    letter-spacing: -.01em;
+  }
+  .nav-logo span { color: var(--coral); }
+  .nav-links { display: flex; gap: 36px; color: var(var(--ink2)); }
+  .nav-links a {
+    font-size: 13px; font-weight: 500; color: var(--ink2);
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--coral); }
+  .nav-cta {
+    background: var(--ink); color: var(--cream) !important;
+    padding: 9px 20px; border-radius: 100px;
+    font-size: 13px !important; font-weight: 600 !important;
+    transition: background .2s !important;
+  }
+  .nav-cta:hover { background: var(--coral) !important; color: #fff !important; }
+
+  /* ─── HERO ────────────────────────────────────────────── */
+  .hero {
+    padding: 140px 0 100px;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 420px; gap: 60px;
+    align-items: center;
+  }
+  .hero-availability {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 500; color: var(--sage);
+    background: #EBF3EF; padding: 6px 14px; border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  .hero-availability .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--sage); animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: .5; transform: scale(1.3); }
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 900; line-height: 1.08;
+    letter-spacing: -.025em; color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--coral);
+  }
+  .hero-bio {
+    font-size: 17px; color: var(--ink3); line-height: 1.75;
+    max-width: 520px; margin-bottom: 40px;
+    font-weight: 300;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--coral); color: #fff;
+    padding: 14px 28px; border-radius: 100px;
+    font-size: 14px; font-weight: 600; letter-spacing: .02em;
+    transition: transform .15s, box-shadow .15s;
+    box-shadow: 0 4px 20px rgba(224,92,58,.35);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(224,92,58,.45); }
+  .btn-outline {
+    border: 1.5px solid var(--border); color: var(--ink);
+    padding: 14px 28px; border-radius: 100px;
+    font-size: 14px; font-weight: 500;
+    transition: border-color .2s, color .2s;
+  }
+  .btn-outline:hover { border-color: var(--ink2); color: var(--ink); }
+
+  /* Hero card */
+  .hero-card {
+    background: var(--card-bg); border-radius: 24px;
+    padding: 32px; box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border);
+  }
+  .hero-card-avatar {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--coral) 0%, #F59D84 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 700; color: #fff;
+    margin-bottom: 18px;
+  }
+  .hero-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+  .hero-card p  { font-size: 13px; color: var(--ink3); margin-bottom: 20px; }
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px; margin-top: 20px;
+  }
+  .hero-stat {
+    background: var(--cream); border-radius: var(--r-sm);
+    padding: 14px 16px;
+  }
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 700; color: var(--ink); line-height: 1;
+  }
+  .hero-stat-label { font-size: 11px; color: var(--ink3); margin-top: 4px; font-weight: 500; }
+  .hero-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  /* ─── SECTION HEADER ─────────────────────────────────── */
+  .section-header { margin-bottom: 60px; }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 800; line-height: 1.12; letter-spacing: -.02em;
+    color: var(--ink);
+  }
+  .section-header p {
+    font-size: 16px; color: var(--ink3); max-width: 560px;
+    margin-top: 14px; line-height: 1.75; font-weight: 300;
+  }
+  .section-divider {
+    width: 40px; height: 3px;
+    background: var(--coral); border-radius: 2px;
+    margin: 16px 0;
+  }
+
+  /* ─── PROJECT CARDS ───────────────────────────────────── */
+  .projects-section { background: var(--cream); }
+  .project-card {
+    background: var(--card-bg);
+    border-radius: 24px; border: 1px solid var(--border);
+    overflow: hidden; box-shadow: var(--shadow);
+    margin-bottom: 40px;
+    transition: box-shadow .25s, transform .25s;
+  }
+  .project-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+
+  /* Header band */
+  .project-header {
+    padding: 40px 48px 32px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-start; gap: 24px;
+  }
+  .project-icon {
+    width: 56px; height: 56px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; flex-shrink: 0;
+  }
+  .project-header-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 800; margin-bottom: 6px;
+  }
+  .project-header-text p { font-size: 14px; color: var(--ink3); }
+  .project-tags { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+
+  /* Case study grid */
+  .case-study-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--border);
+  }
+  .case-col {
+    padding: 36px 48px;
+    border-right: 1px solid var(--border);
+  }
+  .case-col:last-child { border-right: none; }
+  .case-col h4 {
+    font-size: 11px; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--coral);
+    margin-bottom: 12px;
+  }
+  .case-col p { font-size: 14px; color: var(--ink2); line-height: 1.75; }
+
+  /* Wireframe band */
+  .wireframe-band {
+    background: var(--cream); padding: 32px 48px;
+    border-top: 1px solid var(--border);
+  }
+  .wireframe-band h4 {
+    font-size: 11px; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--ink3);
+    margin-bottom: 20px;
+  }
+  .wireframe-row { display: flex; gap: 16px; }
+  .wf-box {
+    flex: 1; background: var(--card-bg); border-radius: var(--r-sm);
+    border: 1.5px dashed var(--border); padding: 16px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .wf-bar {
+    height: 8px; border-radius: 4px; background: var(--cream2);
+  }
+  .wf-bar.header { height: 18px; width: 60%; background: var(--border); }
+  .wf-bar.short  { width: 40%; }
+  .wf-bar.tall   { height: 48px; }
+  .wf-label {
+    font-size: 10px; color: var(--ink3); text-align: center;
+    margin-top: 8px; font-weight: 600; letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+
+  /* UI screens band */
+  .screens-band {
+    padding: 32px 48px; border-top: 1px solid var(--border);
+  }
+  .screens-band h4 {
+    font-size: 11px; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--ink3); margin-bottom: 20px;
+  }
+  .screens-row { display: flex; gap: 16px; }
+  .screen-mockup {
+    flex: 1; border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--border); box-shadow: var(--shadow);
+  }
+  .project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.real-screen {
+  background: #111;
+  min-height: 260px;
+}
+
+  .screen-topbar {
+    height: 32px; display: flex; align-items: center;
+    gap: 6px; padding: 0 12px;
+  }
+  .screen-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .screen-body { padding: 14px; }
+  .screen-row  { display: flex; gap: 8px; margin-bottom: 8px; }
+  .screen-tile {
+    border-radius: 6px; background: rgba(255,255,255,.55);
+  }
+
+  /* Result band */
+  .result-band {
+    padding: 28px 48px; border-top: 1px solid var(--border);
+    background: linear-gradient(90deg, var(--coral-lt) 0%, var(--cream) 100%);
+    display: flex; align-items: center; gap: 40px;
+  }
+  .result-metric { text-align: center; }
+  .result-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; font-weight: 700; color: var(--coral); line-height: 1;
+  }
+  .result-label { font-size: 12px; color: var(--ink3); margin-top: 4px; font-weight: 500; }
+  .result-divider { width: 1px; height: 48px; background: var(--border); }
+  .result-text { font-size: 14px; color: var(--ink2); line-height: 1.7; flex: 1; }
+
+  /* ─── PROCESS SECTION ─────────────────────────────────── */
+  .process-section { background: var(--cream); }
+  .process-section .eyebrow {
+  color: var(--coral);
+}
+
+.process-section .section-header h2 {
+  color: var(--ink);   /* bright heading */
+}
+
+.process-section .section-header p {
+  color: var(--ink3);  /* muted grey */
+}
+
+.process-section .section-divider {
+  background: var(--coral);
+}
+
+ .process-flow {
+  background: var(--card-bg);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+}
+
+  .process-step {
+    flex: 1; padding: 36px 28px;
+    border-right: 1px solid rgba(255,255,255,.07);
+    position: relative;
+    transition: background .2s;
+  }
+  .process-step:last-child { border-right: none; }
+  .process-step:hover { background: rgba(255,255,255,.04); }
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px; font-weight: 900; color: rgba(255,255,255,.08);
+    line-height: 1; margin-bottom: 12px;
+  }
+  .step-icon {
+    width: 42px; height: 42px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; margin-bottom: 16px;
+  }
+  .process-step h4 {
+    font-size: 15px; font-weight: 700; color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .process-step p { font-size: 13px; color: var(--ink3); line-height: 1.7; }
+  .process-arrow {
+    position: absolute; right: -1px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px; color: var(--coral); z-index: 1;
+  }
+
+  /* ─── SKILLS SECTION ──────────────────────────────────── */
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .skill-card {
+    background: var(--card-bg); border-radius: var(--r);
+    border: 1px solid var(--border); padding: 28px 28px 24px;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .skill-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+  .skill-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 16px;
+  }
+  .skill-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .skill-card p  { font-size: 13px; color: var(--ink3); line-height: 1.7; }
+  .skill-bar-wrap {
+    margin-top: 16px; background: var(--cream2);
+    border-radius: 100px; height: 5px; overflow: hidden;
+  }
+  .skill-bar {
+    height: 100%; border-radius: 100px;
+    background: linear-gradient(90deg, var(--coral), #F5967A);
+    transition: width 1s ease;
+  }
+
+  /* ─── FOOTER ──────────────────────────────────────────── */
+  footer {
+    background: var(--ink); color: var(--cream);
+    padding: 60px 0 40px;
+  }
+  .footer-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: start;
+    max-width: 1140px; margin: 0 auto; padding: 0 32px;
+  }
+  .footer-brand h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 800; margin-bottom: 12px;
+  }
+  .footer-brand p { font-size: 14px; color: var(--ink3); line-height: 1.75; max-width: 340px; }
+  .footer-contact h4 {
+    font-size: 13px; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--coral); margin-bottom: 16px;
+  }
+  .contact-item {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 12px;
+  }
+  .contact-item span { font-size: 14px; color: var(--cream2); }
+  .footer-bottom {
+    max-width: 1140px; margin: 40px auto 0; padding: 20px 32px 0;
+    border-top: 1px solid rgba(255,255,255,.08);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-bottom p { font-size: 12px; color: var(--ink3); }
+
+  /* ─── SHOPEASE SCREENS ────────────────────────────────── */
+  .shopease-screen .screen-topbar { background: #667eea; }
+  .shopease-screen .screen-body   { background: #F8F8FC; }
+  .shopease-screen .screen-tile   { background: #fff; border-radius:8px; padding:10px; }
+
+  /* ─── SKILLBRIDGE SCREENS ─────────────────────────────── */
+  .skillbridge-screen .screen-topbar { background: #1E293B; }
+  .skillbridge-screen .screen-body   { background: #0F172A; padding: 12px; }
+  .skillbridge-screen .screen-tile   { background: rgba(255,255,255,.06); border-radius:8px; padding:10px; }
+
+  /* ─── LEETCODE SCREENS ───────────────────────────────── */
+  .leet-screen .screen-topbar { background: #FFA116; }
+  .leet-screen .screen-body   { background: #1A1A2E; }
+  .leet-screen .screen-tile   { background: rgba(255,161,22,.1); border-radius:8px; padding:10px; }
+
+  /* ─── SCROLL REVEAL ──────────────────────────────────── */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity .65s ease, transform .65s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ─── MOBILE ─────────────────────────────────────────── */
+  @media (max-width: 860px) {
+    .hero-grid        { grid-template-columns: 1fr; }
+    .hero-card        { display: none; }
+    .case-study-grid  { grid-template-columns: 1fr; }
+    .case-col         { border-right: none; border-bottom: 1px solid var(--border); }
+    .case-col:last-child { border-bottom: none; }
+    .project-header   { padding: 28px 24px; flex-direction: column; gap: 16px; }
+    .wireframe-band,
+    .screens-band,
+    .result-band,
+    .case-col,
+    .screens-band     { padding: 24px; }
+    .wireframe-row,
+    .screens-row      { flex-direction: column; }
+    .process-flow     { flex-direction: column; }
+    .process-step     { border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); }
+    .skills-grid      { grid-template-columns: 1fr 1fr; }
+    .footer-inner     { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom    { flex-direction: column; gap: 10px; text-align: center; }
+    .nav-links        { display: none; }
+    .result-band      { flex-wrap: wrap; gap: 20px; }
+  }
+  @media (max-width: 560px) {
+    .skills-grid      { grid-template-columns: 1fr; }
+    .container        { padding: 0 20px; }
+    .hero             { padding: 110px 0 70px; }
+    .section          { padding: 70px 0; }
+  }
+
+  /* ─── INTERNSHIP SECTION ───────────────── */
+.internship-section {
+  background: var(--cream);
+}
+
+.internship-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.internship-shot {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform .2s, box-shadow .2s;
+}
+
+.internship-shot:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.internship-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.internship-tags {
+  margin-top: 22px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Mobile */
+@media (max-width: 860px) {
+  .internship-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .internship-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ╔══════════════════════════════════╗ -->
+<!-- ║  NAV                             ║ -->
+<!-- ╚══════════════════════════════════╝ -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">Ishika<span>.</span></span>
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#process">Process</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact" class="nav-cta">Contact me</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ╔══════════════════════════════════╗ -->
+<!-- ║  HERO                            ║ -->
+<!-- ╚══════════════════════════════════╝ -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <!-- Left -->
+      <div>
+        <div class="hero-availability">
+          <span class="dot"></span>
+          Available for opportunities
+        </div>
+        <h1>
+          Designing<br>
+          <em>clarity</em> into<br>
+          every pixel.
+        </h1>
+        <p class="hero-bio">
+          I'm Ishika Poptani — UI/UX Designer &amp; Frontend Developer passionate about building clean, intuitive, and user-friendly digital experiences for web and mobile applications.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary">View Projects ↓</a>
+          <a href="#contact" class="btn-outline">Contact Me</a>
+        </div>
+      </div>
+      <!-- Right card -->
+      <div class="hero-card reveal">
+        <div class="hero-card-avatar">IP</div>
+        <h3>Ishika Poptani</h3>
+        <p>UI/UX Designer &amp; Frontend Developer</p>
+        <div class="hero-tags">
+          <span class="tag">Figma</span>
+          <span class="tag">React</span>
+          <span class="tag">Design Systems</span>
+          <span class="tag">UX Research</span>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">3+</div>
+            <div class="hero-stat-label">Case Studies</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">5+</div>
+            <div class="hero-stat-label">Projects shipped</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">100%</div>
+            <div class="hero-stat-label">User-centered focus</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num serif" style="font-size:18px;line-height:1.3">Web & Mobile</div>
+            <div class="hero-stat-label">Platforms designed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════╗ -->
+<!-- ║  PROJECTS                        ║ -->
+<!-- ╚══════════════════════════════════╝ -->
+<section class="section projects-section" id="projects">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="eyebrow">Featured Work</p>
+      <h2 class="serif">Case Studies</h2>
+      <div class="section-divider"></div>
+      <p>Three end-to-end design explorations showing research, thinking, wireframes, final UI, and measurable outcomes.</p>
+    </div>
+
+    <!-- ═══ PROJECT 1 – SHOPEASE ═══ -->
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-icon" style="background:#EEF0FF;">🛍️</div>
+        <div class="project-header-text">
+          <h3>VisionMVPs — MVP Prototyping Platform</h3>
+          <p>Rapid MVP prototyping platform with AI-powered insights helping startups validate ideas faster.</p>
+          <div class="project-tags">
+            <span class="tag">SaaS Platform</span>
+            <span class="tag">AI-powered</span>
+            <span class="tag">Startup Tool</span>
+            <span class="tag">Next.js</span>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="case-study-grid">
+        <div class="case-col">
+          <h4>🔴 The Problem</h4>
+          <p>
+            Startups struggled to validate ideas quickly due to lack of structured MVP workflows. Existing tools were complex and
+            overwhelming, making it difficult to move from idea → prototype efficiently.
+          </p>
+
+        </div>
+        <div class="case-col" style="border-right:none;">
+          <h4>🔍 UX Thinking &amp; Research</h4>
+          <p>Conducted a heuristic audit and 5-second tests with 12 users. Found that <strong>trust signals</strong> (reviews, badges) and <strong>product clarity</strong> (size charts, zoom) were the top two missing elements. Simplified checkout from 7 → 3 steps using a progressive disclosure pattern.</p>
+        </div>
+      </div>
+
+      <div class="wireframe-band">
+        <h4>📐 Wireframe Exploration</h4>
+        <div class="wireframe-row">
+          <div style="flex:1;">
+            <div class="wf-box">
+              <div class="wf-bar header"></div>
+              <div class="wf-bar" style="height:80px;"></div>
+              <div class="wf-bar short"></div>
+              <div class="wf-bar short" style="width:30%"></div>
+              <div class="wf-bar" style="height:28px;background:#E0DAD0;"></div>
+            </div>
+            <p class="wf-label">Product Page — V1 (Cluttered)</p>
+          </div>
+          <div style="flex:1;">
+            <div class="wf-box">
+              <div class="wf-bar header" style="width:40%"></div>
+              <div class="wf-bar" style="height:100px;"></div>
+              <div class="wf-bar" style="width:80%"></div>
+              <div class="wf-bar short" style="width:50%"></div>
+              <div class="wf-bar" style="height:32px;background:#FBEAE4;"></div>
+            </div>
+            <p class="wf-label">Product Page — V2 (Focused)</p>
+          </div>
+          <div style="flex:1;">
+            <div class="wf-box">
+              <div class="wf-bar header" style="width:25%"></div>
+              <div style="display:flex;gap:6px;">
+                <div class="wf-bar" style="flex:1;height:28px;"></div>
+                <div class="wf-bar" style="flex:1;height:28px;"></div>
+              </div>
+              <div class="wf-bar short"></div>
+              <div class="wf-bar" style="height:32px;background:#FBEAE4;"></div>
+              <div class="wf-bar short" style="width:60%"></div>
+            </div>
+            <p class="wf-label">Checkout — 3-Step Flow</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="screens-band">
+
+        <h4>🖥️ Final UI Screens</h4>
+        <div class="screens-row">
+          <div class="screen-mockup shopease-screen">
+            <div class="screen-topbar" style="background:#667eea;">
+              <div class="screen-dot" style="background:#ff5f57"></div>
+              <div class="screen-dot" style="background:#febc2e"></div>
+              <div class="screen-dot" style="background:#28c840"></div>
+            </div>
+            <div class="screen-body" style="background:#F8F8FF;padding:14px;">
+              <div style="background:#fff;border-radius:10px;padding:12px;margin-bottom:8px;box-shadow:0 2px 8px rgba(0,0,0,.06);">
+                <div style="height:80px;background:linear-gradient(135deg,#667eea20,#764ba220);border-radius:8px;margin-bottom:8px;"></div>
+                <div style="height:8px;background:#EEF;border-radius:4px;width:70%;margin-bottom:6px;"></div>
+                <div style="height:6px;background:#EEF;border-radius:4px;width:40%;margin-bottom:10px;"></div>
+                <div style="height:28px;background:linear-gradient(90deg,#667eea,#764ba2);border-radius:6px;"></div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                <div style="background:#fff;border-radius:8px;padding:10px;">
+                  <div style="height:50px;background:#f0f0ff;border-radius:6px;margin-bottom:6px;"></div>
+                  <div style="height:6px;background:#EEF;border-radius:4px;width:80%;margin-bottom:4px;"></div>
+                  <div style="height:5px;background:#EEF;border-radius:4px;width:50%;"></div>
+                </div>
+                <div style="background:#fff;border-radius:8px;padding:10px;">
+                  <div style="height:50px;background:#f0f0ff;border-radius:6px;margin-bottom:6px;"></div>
+                  <div style="height:6px;background:#EEF;border-radius:4px;width:80%;margin-bottom:4px;"></div>
+                  <div style="height:5px;background:#EEF;border-radius:4px;width:50%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="screen-mockup shopease-screen" style="flex:1.4">
+            <div class="screen-topbar" style="background:#764ba2;">
+              <div class="screen-dot" style="background:#ff5f57"></div>
+              <div class="screen-dot" style="background:#febc2e"></div>
+              <div class="screen-dot" style="background:#28c840"></div>
+            </div>
+            <div class="screen-body" style="background:#fff;padding:16px;">
+              <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:16px;">
+                <div>
+                  <div style="height:140px;background:linear-gradient(135deg,#f0f0ff,#e8e0ff);border-radius:10px;margin-bottom:10px;"></div>
+                  <div style="display:flex;gap:6px;margin-bottom:10px;">
+                    <div style="width:28px;height:28px;border-radius:6px;background:#f0f0ff;"></div>
+                    <div style="width:28px;height:28px;border-radius:6px;background:#f0f0ff;border:2px solid #667eea;"></div>
+                    <div style="width:28px;height:28px;border-radius:6px;background:#f0f0ff;"></div>
+                  </div>
+                </div>
+                <div>
+                  <div style="height:8px;background:#EEF;border-radius:4px;width:90%;margin-bottom:6px;"></div>
+                  <div style="height:6px;background:#EEF;border-radius:4px;width:60%;margin-bottom:12px;"></div>
+                  <div style="height:5px;background:#FFD9D9;border-radius:4px;width:50%;margin-bottom:6px;"></div>
+                  <div style="height:5px;background:#D9FFE8;border-radius:4px;width:70%;margin-bottom:16px;"></div>
+                  <div style="display:flex;gap:6px;margin-bottom:8px;">
+                    <div style="flex:1;height:22px;border-radius:4px;background:#EEF;"></div>
+                    <div style="flex:1;height:22px;border-radius:4px;background:#EEF;"></div>
+                  </div>
+                  <div style="height:30px;background:linear-gradient(90deg,#667eea,#764ba2);border-radius:6px;"></div>
+                  <div style="height:22px;border:1.5px solid #EEF;border-radius:6px;margin-top:8px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div class="screens-band">
+        <h4>🖥️ Final UI Screens</h4>
+      
+        <div class="screens-row">
+      
+          <div class="screen-mockup real-screen">
+            <img src="assets/visionmvps/screen1.png" class="project-image" alt="VisionMVPs Dashboard">
+          </div>
+      
+          <div class="screen-mockup real-screen">
+            <img src="assets/visionmvps/screen2.png" class="project-image" alt="VisionMVPs AI Insights">
+          </div>
+      
+          <div class="screen-mockup real-screen">
+            <img src="assets/visionmvps/screen3.png" class="project-image" alt="VisionMVPs Workflow">
+          </div>
+      
+        </div>
+      </div>
+
+      <!-- <div class="result-band">
+        <div class="result-metric">
+          <div class="result-num">72%→28%</div>
+          <div class="result-label">Cart Abandonment</div>
+        </div>
+        <div class="result-divider"></div>
+        <div class="result-metric">
+          <div class="result-num">3 steps</div>
+          <div class="result-label">Checkout (was 7)</div>
+        </div>
+        <div class="result-divider"></div>
+        <div class="result-metric">
+          <div class="result-num">+40%</div>
+          <div class="result-label">Product Page Clarity</div>
+        </div>
+        <div class="result-divider"></div>
+        <p class="result-text">Simplified information architecture and progressive checkout reduced cognitive load significantly. Clear visual hierarchy with trust signals improved user confidence and conversion rate.</p>
+      </div> -->
+      <div class="result-band">
+      
+        <div class="result-metric">
+          <div class="result-num">AI-driven</div>
+          <div class="result-label">Startup Insights</div>
+        </div>
+      
+        <div class="result-divider"></div>
+      
+        <div class="result-metric">
+          <div class="result-num">Faster</div>
+          <div class="result-label">MVP Validation</div>
+        </div>
+      
+        <div class="result-divider"></div>
+      
+        <div class="result-metric">
+          <div class="result-num">Clean UX</div>
+          <div class="result-label">Step-based Flow</div>
+        </div>
+      
+        <div class="result-divider"></div>
+      
+        <p class="result-text">
+          VisionMVPs uses structured UX flows and AI insights to help founders rapidly move from idea to prototype.
+          The UI focuses on clarity, reduced friction, and decision support.
+        </p>
+      
+      </div>
+
+    </div>
+    <!-- /shopease -->
+
+    
+      <div class="project-header">
+        <div class="project-icon" style="background:#E8F4FD;">🎓</div>
+        <div class="project-header-text">
+          <h3>SkillBridge — AI Learning Dashboard</h3>
+          <p>Creating a focused, distraction-free learning environment for an AI-powered education platform.</p>
+          <div class="project-tags">
+            <span class="tag">EdTech</span>
+            <span class="tag">Dashboard</span>
+            <span class="tag">AI-powered</span>
+            <span class="tag">Dark UI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-study-grid">
+        <div class="case-col">
+          <h4>🔴 The Problem</h4>
+          <p>Learners on AI-powered platforms reported <strong>overwhelming UI</strong> — too many course suggestions, unclear progress tracking, and no clear "what to do next." Retention dropped after week 2 due to lack of momentum indicators.</p>
+        </div>
+        <div class="case-col" style="border-right:none;">
+          <h4>🔍 UX Thinking &amp; Research</h4>
+          <p>Ran user journey mapping sessions and identified 3 drop-off points. Applied the <strong>Progress Principle</strong> — surfacing small wins and streaks to build habits. Consolidated all AI recommendations into a single contextual "Focus Mode" panel, removing sidebar clutter.</p>
+        </div>
+      </div>
+
+      <div class="wireframe-band">
+        <h4>📐 Wireframe Exploration</h4>
+        <div class="wireframe-row">
+          <div style="flex:1.6">
+            <div class="wf-box">
+              <div class="wf-bar header"></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:8px;">
+                <div class="wf-bar" style="height:36px;"></div>
+                <div class="wf-bar" style="height:36px;"></div>
+                <div class="wf-bar" style="height:36px;"></div>
+              </div>
+              <div style="display:grid;grid-template-columns:2fr 1fr;gap:8px;">
+                <div class="wf-bar" style="height:64px;"></div>
+                <div class="wf-bar" style="height:64px;"></div>
+              </div>
+            </div>
+            <p class="wf-label">Dashboard Layout — Final</p>
+          </div>
+          <div style="flex:1">
+            <div class="wf-box">
+              <div class="wf-bar header" style="width:50%"></div>
+              <div class="wf-bar" style="height:12px;background:linear-gradient(90deg,var(--border) 60%,var(--cream2) 60%);border-radius:4px;"></div>
+              <div class="wf-bar short"></div>
+              <div style="display:flex;gap:6px;">
+                <div style="width:14px;height:14px;border-radius:3px;background:var(--border);"></div>
+                <div class="wf-bar short" style="flex:1;height:14px;"></div>
+              </div>
+              <div style="display:flex;gap:6px;">
+                <div style="width:14px;height:14px;border-radius:3px;background:var(--border);"></div>
+                <div class="wf-bar short" style="flex:1;height:14px;"></div>
+              </div>
+            </div>
+            <p class="wf-label">Progress Module</p>
+          </div>
+          <div style="flex:1">
+            <div class="wf-box">
+              <div class="wf-bar header" style="width:70%"></div>
+              <div class="wf-bar" style="height:48px;background:rgba(224,92,58,.12);border-radius:6px;"></div>
+              <div class="wf-bar short"></div>
+              <div class="wf-bar" style="height:28px;background:rgba(224,92,58,.18);border-radius:4px;"></div>
+            </div>
+            <p class="wf-label">AI Focus Panel</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="screens-band">
+        <h4>🖥️ Final UI Screens</h4>
+        <div class="screens-row">
+          <div class="screen-mockup skillbridge-screen" style="flex:1.8">
+            <div class="screen-topbar" style="background:#1E293B;">
+              <div class="screen-dot" style="background:#ff5f57"></div>
+              <div class="screen-dot" style="background:#febc2e"></div>
+              <div class="screen-dot" style="background:#28c840"></div>
+            </div>
+            <div style="background:#0F172A;padding:14px;">
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px;">
+                <div style="background:#1E293B;border-radius:8px;padding:10px;">
+                  <div style="height:6px;background:#334155;border-radius:4px;width:60%;margin-bottom:4px;"></div>
+                  <div style="height:14px;background:#38BDF8;border-radius:3px;width:40%;"></div>
+                </div>
+                <div style="background:#1E293B;border-radius:8px;padding:10px;">
+                  <div style="height:6px;background:#334155;border-radius:4px;width:60%;margin-bottom:4px;"></div>
+                  <div style="height:14px;background:#A78BFA;border-radius:3px;width:40%;"></div>
+                </div>
+                <div style="background:#1E293B;border-radius:8px;padding:10px;">
+                  <div style="height:6px;background:#334155;border-radius:4px;width:60%;margin-bottom:4px;"></div>
+                  <div style="height:14px;background:#4ADE80;border-radius:3px;width:40%;"></div>
+                </div>
+              </div>
+              <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:10px;">
+                <div style="background:#1E293B;border-radius:8px;padding:12px;">
+                  <div style="height:6px;background:#334155;border-radius:4px;width:50%;margin-bottom:8px;"></div>
+                  <div style="height:8px;background:#334155;border-radius:4px;margin-bottom:6px;overflow:hidden;">
+                    <div style="height:100%;width:68%;background:linear-gradient(90deg,#38BDF8,#818CF8);"></div>
+                  </div>
+                  <div style="height:8px;background:#334155;border-radius:4px;margin-bottom:6px;overflow:hidden;">
+                    <div style="height:100%;width:43%;background:linear-gradient(90deg,#A78BFA,#EC4899);"></div>
+                  </div>
+                  <div style="height:8px;background:#334155;border-radius:4px;overflow:hidden;">
+                    <div style="height:100%;width:81%;background:linear-gradient(90deg,#4ADE80,#22D3EE);"></div>
+                  </div>
+                </div>
+                <div style="background:linear-gradient(135deg,#1E293B,#2D1B69);border-radius:8px;padding:12px;border:1px solid rgba(167,139,250,.2);">
+                  <div style="height:6px;background:rgba(167,139,250,.3);border-radius:4px;width:70%;margin-bottom:6px;"></div>
+                  <div style="height:5px;background:rgba(255,255,255,.1);border-radius:4px;margin-bottom:4px;"></div>
+                  <div style="height:5px;background:rgba(255,255,255,.1);border-radius:4px;width:80%;margin-bottom:10px;"></div>
+                  <div style="height:22px;background:linear-gradient(90deg,#7C3AED,#A855F7);border-radius:5px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="screen-mockup skillbridge-screen">
+            <div class="screen-topbar" style="background:#312E81;">
+              <div class="screen-dot" style="background:#ff5f57"></div>
+              <div class="screen-dot" style="background:#febc2e"></div>
+              <div class="screen-dot" style="background:#28c840"></div>
+            </div>
+            <div style="background:#1E1B4B;padding:12px;">
+              <div style="height:6px;background:#312E81;border-radius:4px;width:60%;margin-bottom:8px;"></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px;">
+                <div style="background:#312E81;border-radius:7px;padding:8px;">
+                  <div style="width:16px;height:16px;border-radius:50%;background:#4ADE80;margin-bottom:6px;"></div>
+                  <div style="height:5px;background:rgba(255,255,255,.15);border-radius:3px;"></div>
+                </div>
+                <div style="background:#312E81;border-radius:7px;padding:8px;">
+                  <div style="width:16px;height:16px;border-radius:50%;background:#F59E0B;margin-bottom:6px;"></div>
+                  <div style="height:5px;background:rgba(255,255,255,.15);border-radius:3px;"></div>
+                </div>
+              </div>
+              <div style="background:#312E81;border-radius:8px;padding:10px;">
+                <div style="height:5px;background:rgba(255,255,255,.2);border-radius:3px;width:80%;margin-bottom:4px;"></div>
+                <div style="height:5px;background:rgba(255,255,255,.1);border-radius:3px;width:60%;margin-bottom:8px;"></div>
+                <div style="height:18px;background:linear-gradient(90deg,#6366F1,#8B5CF6);border-radius:4px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-band">
+        <div class="result-metric">
+          <div class="result-num">+55%</div>
+          <div class="result-label">Week-2 Retention</div>
+        </div>
+        <div class="result-divider"></div>
+        <div class="result-metric">
+          <div class="result-num">1 panel</div>
+          <div class="result-label">AI Recs (was scattered)</div>
+        </div>
+        <div class="result-divider"></div>
+        <div class="result-metric">
+          <div class="result-num">3x</div>
+          <div class="result-label">Progress Visibility</div>
+        </div>
+        <div class="result-divider"></div>
+        <p class="result-text">Consolidating AI recommendations and surfacing micro-progress wins kept learners motivated. The dark dashboard reduced eye strain for extended study sessions, improving daily active use.</p>
+      </div>
+    </div> 
+    <!-- ═══ PROJECT 2 – ZEROEFFORT ═══ -->
+    <div class="project-card reveal" style="transition-delay:.1s">
+    
+      <div class="project-header">
+        <div class="project-icon" style="background:#E8FFF3;">⚡</div>
+        <div class="project-header-text">
+          <h3>ZeroEffort — AI Productivity Planner</h3>
+          <p>
+            AI-powered productivity assistant that converts simple prompts into structured daily action plans.
+          </p>
+    
+          <div class="project-tags">
+            <span class="tag">Productivity SaaS</span>
+            <span class="tag">AI-powered</span>
+            <span class="tag">Task Planning</span>
+            <span class="tag">Automation</span>
+          </div>
+        </div>
+      </div>
+    
+      <!-- PROBLEM + RESEARCH -->
+      <div class="case-study-grid">
+        <div class="case-col">
+          <h4>🔴 The Problem</h4>
+          <p>
+            Professionals and founders struggle with decision fatigue when planning daily work.
+            Most productivity tools require manual setup, creating friction before execution even begins.
+          </p>
+        </div>
+    
+        <div class="case-col" style="border-right:none;">
+          <h4>🔍 UX Thinking & Research</h4>
+          <p>
+            Focused on reducing cognitive load by enabling <strong>single-command planning</strong>.
+            Users wanted instant structure — not dashboards full of settings.
+            Designed a flow that moves from prompt → plan → execution in seconds.
+          </p>
+        </div>
+      </div>
+    
+      <!-- WIREFRAMES -->
+      <div class="wireframe-band">
+        <h4>📐 Wireframe Exploration</h4>
+    
+        <div class="wireframe-row">
+    
+          <div style="flex:1;">
+            <div class="wf-box">
+              <div class="wf-bar header"></div>
+              <div class="wf-bar" style="height:70px;"></div>
+              <div class="wf-bar short"></div>
+              <div class="wf-bar" style="height:28px;background:#1f2b24;"></div>
+            </div>
+            <p class="wf-label">Prompt Input Screen</p>
+          </div>
+    
+          <div style="flex:1;">
+            <div class="wf-box">
+              <div class="wf-bar header" style="width:40%"></div>
+              <div class="wf-bar" style="height:90px;"></div>
+              <div class="wf-bar short"></div>
+              <div class="wf-bar short" style="width:60%"></div>
+            </div>
+            <p class="wf-label">Generated Plan View</p>
+          </div>
+    
+          <div style="flex:1;">
+            <div class="wf-box">
+              <div class="wf-bar header" style="width:50%"></div>
+              <div class="wf-bar" style="height:30px;"></div>
+              <div class="wf-bar" style="height:30px;"></div>
+              <div class="wf-bar" style="height:30px;"></div>
+            </div>
+            <p class="wf-label">Task Tracking Flow</p>
+          </div>
+    
+        </div>
+      </div>
+    
+      <!-- FINAL SCREENS -->
+      <div class="screens-band">
+        <h4>🖥️ Final UI Screens</h4>
+    
+        <div class="screens-row">
+    
+          <div class="screen-mockup real-screen">
+            <img src="assets/zeroeffort/screen1.png" class="project-image" alt="ZeroEffort Hero">
+          </div>
+    
+          <div class="screen-mockup real-screen">
+            <img src="assets/zeroeffort/screen2.png" class="project-image" alt="AI Plan Generator">
+          </div>
+    
+          <div class="screen-mockup real-screen">
+            <img src="assets/zeroeffort/screen3.png" class="project-image" alt="Task Planning">
+          </div>
+    
+        </div>
+      </div>
+    
+      <!-- RESULTS -->
+      <div class="result-band">
+    
+        <div class="result-metric">
+          <div class="result-num">One Prompt</div>
+          <div class="result-label">Instant Planning</div>
+        </div>
+    
+        <div class="result-divider"></div>
+    
+        <div class="result-metric">
+          <div class="result-num">AI-driven</div>
+          <div class="result-label">Task Automation</div>
+        </div>
+    
+        <div class="result-divider"></div>
+    
+        <div class="result-metric">
+          <div class="result-num">Reduced</div>
+          <div class="result-label">Decision Fatigue</div>
+        </div>
+    
+        <div class="result-divider"></div>
+    
+        <p class="result-text">
+          ZeroEffort simplifies productivity by turning natural language inputs into actionable plans.
+          The UX focuses on instant clarity, minimal setup, and helping users move directly into execution.
+        </p>
+    
+      </div>
+    
+    </div>
+    <!-- /zeroeffort -->
+
+    <!-- /skillbridge -->
+
+    <!-- ═══ PROJECT 3 – LEETCODESQUARE ═══ -->
+    <div class="project-card reveal" style="transition-delay:.2s">
+      <div class="project-header">
+        <div class="project-icon" style="background:#FFF8E8;">⚡</div>
+        <div class="project-header-text">
+          <h3>LeetcodeNSquare — Algorithm Complexity Analyzer</h3>
+          <p>Designing an intuitive complexity visualization dashboard for developers and CS students.</p>
+          <div class="project-tags">
+            <span class="tag">Dev Tools</span>
+            <span class="tag">Data Viz</span>
+            <span class="tag">Dashboard</span>
+            <span class="tag">Dark + Accent</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-study-grid">
+        <div class="case-col">
+          <h4>🔴 The Problem</h4>
+          <p>Developers analyzing algorithm complexity had no visual tool — they relied on text annotations and mental models. CS students struggled to understand <strong>Big-O growth curves</strong> without visual comparison, leading to poor optimization decisions.</p>
+        </div>
+        <div class="case-col" style="border-right:none;">
+          <h4>🔍 UX Thinking &amp; Research</h4>
+          <p>Studied cognitive load theory to determine how charts should be layered. Used <strong>progressive disclosure</strong> — showing O(n) first, then allowing overlay of multiple complexities. Added color-coded severity badges (green/yellow/red) so engineers can scan risk at a glance without reading details.</p>
+        </div>
+      </div>
+
+      <div class="wireframe-band">
+        <h4>📐 Wireframe Exploration</h4>
+        <div class="wireframe-row">
+          <div style="flex:1">
+            <div class="wf-box">
+              <div class="wf-bar header"></div>
+              <div style="display:flex;gap:4px;margin-bottom:6px;">
+                <div class="wf-bar" style="flex:1;height:12px;background:rgba(224,92,58,.25);"></div>
+                <div class="wf-bar" style="flex:1;height:12px;background:rgba(224,92,58,.15);"></div>
+                <div class="wf-bar" style="flex:1;height:12px;background:rgba(224,92,58,.1);"></div>
+              </div>
+              <div class="wf-bar" style="height:60px;"></div>
+            </div>
+            <p class="wf-label">Complexity Chart Panel</p>
+          </div>
+          <div style="flex:1">
+            <div class="wf-box">
+              <div class="wf-bar header" style="width:40%"></div>
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
+                <div style="width:10px;height:10px;border-radius:2px;background:#4ADE80;flex-shrink:0;"></div>
+                <div class="wf-bar" style="flex:1;height:8px;"></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
+                <div style="width:10px;height:10px;border-radius:2px;background:#FACC15;flex-shrink:0;"></div>
+                <div class="wf-bar" style="flex:1;height:8px;"></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div style="width:10px;height:10px;border-radius:2px;background:#F87171;flex-shrink:0;"></div>
+                <div class="wf-bar" style="flex:1;height:8px;"></div>
+              </div>
+            </div>
+            <p class="wf-label">Severity Legend</p>
+          </div>
+          <div style="flex:1.3">
+            <div class="wf-box">
+              <div class="wf-bar header"></div>
+              <div class="wf-bar short"></div>
+              <div style="background:rgba(224,92,58,.1);border-radius:6px;padding:8px;border:1px dashed rgba(224,92,58,.3);">
+                <div class="wf-bar" style="height:8px;margin-bottom:4px;"></div>
+                <div class="wf-bar short"></div>
+              </div>
+              <div class="wf-bar short" style="width:80%"></div>
+            </div>
+            <p class="wf-label">Code Input + Analysis</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="screens-band">
+        <h4>🖥️ Final UI Screens</h4>
+      
+        <div class="screens-row">
+      
+          <div class="screen-mockup real-screen">
+            <img src="assets/leetcodensquare/screen1.png" class="project-image" alt="LeetcodeNSquare Dashboard">
+          </div>
+      
+          <div class="screen-mockup real-screen">
+            <img src="assets/leetcodensquare/screen2.png" class="project-image" alt="Complexity Analyzer">
+          </div>
+      
+          <div class="screen-mockup real-screen">
+            <img src="assets/leetcodensquare/screen3.png" class="project-image" alt="Code Analysis Result">
+          </div>
+      
+        </div>
+      </div>
+
+
+      <div class="result-band">
+        <div class="result-metric">
+          <div class="result-num">100%</div>
+          <div class="result-label">Visual Complexity Coverage</div>
+        </div>
+        <div class="result-divider"></div>
+        <div class="result-metric">
+          <div class="result-num">3-color</div>
+          <div class="result-label">Severity System</div>
+        </div>
+        <div class="result-divider"></div>
+        <div class="result-metric">
+          <div class="result-num">5s</div>
+          <div class="result-label">Time to insight</div>
+        </div>
+        <div class="result-divider"></div>
+        <p class="result-text">Color-coded severity badges let engineers identify risky complexity in under 5 seconds. The progressive overlay chart system allows students to compare Big-O curves dynamically without cognitive overload.</p>
+      </div>
+    </div>
+    <!-- /leet -->
+
+  </div>
+</section>
+
+<!-- ═══ INTERNSHIP WORK ═══ -->
+<section class="section internship-section" id="internship">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <p class="eyebrow">Real Work</p>
+      <h2 class="serif">Internship Product Screens</h2>
+      <div class="section-divider"></div>
+      <p>
+        UI/UX screens designed during internship using
+        <strong>Figma</strong> and implemented with
+        <strong>React Native</strong>.
+        These interfaces were built for real users and production workflows.
+      </p>
+    </div>
+
+    <div class="internship-grid reveal">
+
+      <div class="internship-shot">
+        <img src="assets/internship/screen1.png" alt="Internship Screen 1">
+      </div>
+      <div class="internship-shot">
+        <img src="assets/internship/screen3.png" alt="Internship Screen 3">
+      </div>
+
+      <div class="internship-shot">
+        <img src="assets/internship/screen4.png" alt="Internship Screen 4">
+      </div>
+
+    </div>
+
+    <div class="internship-tags">
+      <span class="tag">Figma</span>
+      <span class="tag">React Native</span>
+      <span class="tag">Mobile UI</span>
+      <span class="tag">Production Work</span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ╔══════════════════════════════════╗ -->
+<!-- ║  PROCESS                         ║ -->
+<!-- ╚══════════════════════════════════╝ -->
+<section class="section process-section" id="process">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="eyebrow">How I Work</p>
+      <h2 class="serif">Design Process</h2>
+      <div class="section-divider"></div>
+      <p style="color:#7A7468">Every project follows a structured, research-grounded workflow from problem discovery to final delivery.</p>
+    </div>
+
+    <div class="process-flow reveal">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-icon" style="background:rgba(224,92,58,.15);">🔍</div>
+        <h4>Research</h4>
+        <p>User interviews, heuristic audits, competitive analysis, and defining the core problem. Understand before designing.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-icon" style="background:rgba(56,189,248,.12);">✏️</div>
+        <h4>Wireframe</h4>
+        <p>Low-fidelity sketches and flows to explore structure, hierarchy, and user journeys — before any visual decisions.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-icon" style="background:rgba(167,139,250,.12);">🎨</div>
+        <h4>UI Design</h4>
+        <p>High-fidelity Figma designs with a consistent design system, components, typography, and color tokens.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-icon" style="background:rgba(74,222,128,.12);">🧪</div>
+        <h4>Testing</h4>
+        <p>Usability testing, 5-second tests, and feedback loops. Iterate on pain points before final handoff.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">05</div>
+        <div class="step-icon" style="background:rgba(224,92,58,.15);">🚀</div>
+        <h4>Final Design</h4>
+        <p>Polished deliverables — annotated specs, responsive variants, component libraries, and dev handoff assets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════╗ -->
+<!-- ║  SKILLS                          ║ -->
+<!-- ╚══════════════════════════════════╝ -->
+<section class="section" id="skills">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="eyebrow">Capabilities</p>
+      <h2 class="serif">Tools & Skills</h2>
+      <div class="section-divider"></div>
+      <p>A focused toolkit built around user-centered design, systems thinking, and clean implementation.</p>
+    </div>
+
+    <div class="skills-grid">
+
+      <div class="skill-card reveal">
+        <div class="skill-icon" style="background:#FFF3F0;">🎨</div>
+        <h4>Figma</h4>
+        <p>End-to-end design in Figma — components, auto-layout, prototyping, and developer handoff with detailed annotations.</p>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:92%"></div></div>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay:.06s">
+        <div class="skill-icon" style="background:#F0F4FF;">🧩</div>
+        <h4>Design Systems</h4>
+        <p>Building scalable, token-based component libraries that ensure consistency across large products and teams.</p>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay:.12s">
+        <div class="skill-icon" style="background:#F0FFF5;">📱</div>
+        <h4>Responsive Design</h4>
+        <p>Crafting fluid, adaptive layouts from mobile-first principles to large desktop screens with pixel-perfect execution.</p>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay:.18s">
+        <div class="skill-icon" style="background:#FFFBF0;">♿</div>
+        <h4>Accessibility Basics</h4>
+        <p>Applying WCAG 2.1 contrast ratios, semantic HTML structure, keyboard navigation, and screen-reader friendly patterns.</p>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay:.24s">
+        <div class="skill-icon" style="background:#F5F0FF;">🔬</div>
+        <h4>UX Research</h4>
+        <p>User interviews, journey mapping, heuristic evaluations, 5-second tests, and translating insights into design decisions.</p>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay:.30s">
+        <div class="skill-icon" style="background:#FFF0F5;">⚡</div>
+        <h4>Prototyping</h4>
+        <p>Interactive Figma prototypes with realistic flows, transition logic, and component states to communicate complex interactions.</p>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:87%"></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════╗ -->
+<!-- ║  FOOTER / CONTACT                ║ -->
+<!-- ╚══════════════════════════════════╝ -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>Ishika Poptani</h3>
+      <p style="color:#7A7468;margin-top:10px;">UI/UX Designer passionate about creating clean, intuitive, and user-friendly digital experiences. Let's build something great together.</p>
+    </div>
+    <div class="footer-contact">
+      <h4>Get in touch</h4>
+      <div class="contact-item">
+        <span>✉️</span>
+        <span>ishikapoptani01@email.com</span>
+      </div>
+      <div class="contact-item">
+        <span>💼</span>
+        <span>https://www.linkedin.com/in/ishikapoptani/</span>
+      </div>
+      <div class="contact-item">
+        <span>🎨</span>
+        <span>Figma portfolio available on request</span>
+      </div>
+      <div style="margin-top:20px;display:flex;gap:10px;">
+        <a href="#home" style="background:var(--coral);color:#fff;padding:12px 24px;border-radius:100px;font-size:13px;font-weight:600;transition:opacity .2s;" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">View Projects ↑</a>
+        <a href="mailto:ishikapoptani01@gmail.com" style="border:1.5px solid rgba(255,255,255,.2);color:var(--cream);padding:12px 24px;border-radius:100px;font-size:13px;font-weight:500;">Email me</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Ishika Poptani — UI/UX Designer &amp; Frontend Developer</p>
+    <p>Designed with intention. Built with care.</p>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => io.observe(el));
+
+  // Stagger hero reveal on load
+  document.querySelector('.hero-card').classList.add('visible');
+  setTimeout(() => document.querySelector('.hero-card').style.transition = 'opacity .8s ease, transform .8s ease', 100);
+</script>
+</body>
+</html>
